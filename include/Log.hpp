@@ -28,9 +28,6 @@
 class Log
 {
 public:
-    Log();
-    virtual ~Log();
-
     void Debug(std::string msg);
     void Info(std::string msg);
     void Warn(std::string msg);
@@ -43,6 +40,9 @@ public:
     static Log *Get();
 
 private:
+    Log();
+    virtual ~Log();
+
     void format(int level, std::string prefix, std::string msg);
     int filter_to;
     static Log *logger;

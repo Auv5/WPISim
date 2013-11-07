@@ -16,7 +16,7 @@ void Log::format(int level, std::string prefix, std::string msg) {
 
 Log *Log::Get() {
     if (!logger) {
-
+	logger = new Log();
     }
 
     return logger;
