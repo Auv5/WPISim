@@ -1,0 +1,45 @@
+Jaguar
+- Set
+- Get
+Victor
+- Set
+- Get
+Talon
+- Set
+- Get
+Encoder
+- SetDistancePerPulse
+- SetReverseDirection
+- Reset
+- GetDistance
+DoubleSolenoid
+- Set (needs enum for kReverse, kForward)
+- Get
+AnalogChannel
+- GetVoltage
+AnalogTrigger
+- SetAveraged
+- SetLimitsVoltage
+- SetFiltered
+- GetTriggerState
+DigitalInput
+- Get
+Compressor
+- Start
+Timer
+- Start
+- Stop
+- Reset
+- HasPeriodPassed
+DriverStationLCD
+- GetInstance
+- Clear
+- PrintfLine (Needs enum kUser_Line1 through kUser_Line6)
+- UpdateLCD
+Joystick
+- GetRawButton
+RobotDrive
+- SetInvertedMotor (needs enum kRearLeftMotor, kFrontRightMotor, etc)
+- Drive
+- SetSafetyEnabled
+- ArcadeDrive (Joystick)
