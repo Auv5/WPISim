@@ -1,10 +1,10 @@
-Jaguar
+Jaguar (complete)
 - Set
 - Get
-Victor
+Victor (complete)
 - Set
 - Get
-Talon
+Talon (complete)
 - Set
 - Get
 Encoder

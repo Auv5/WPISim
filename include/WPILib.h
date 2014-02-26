@@ -4,4 +4,7 @@
 #include "SimpleRobot.hpp"
 #include "Main.hpp"
 
+// Library features
+#include "MotorController.hpp"
+
 #endif
