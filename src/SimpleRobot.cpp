@@ -8,6 +8,14 @@ SimpleRobot::SimpleRobot() :
 
 SimpleRobot::~SimpleRobot() { }
 
+void SimpleRobot::Disabled() {
+    printf("DEFAULT Disabled() - Consider overriding.\n");
+}
+
+bool SimpleRobot::IsDisabled() {
+    return this->state == SimpleRobot::DISABLED;
+}
+
 void SimpleRobot::Autonomous() {
     printf("DEFAULT Autonomous() - Consider overriding.\n");
 }

@@ -1,3 +1,4 @@
+#include <iostream>
 #include <thread>
 #include <chrono>
 #include <stdio.h>
@@ -27,6 +28,9 @@ static void RobotThread(SimpleRobot *robot) {
             robot->Disabled();
             while (robot->IsDisabled());
             break;
+        case SimpleRobot::STOP:
+            // End the thread when we see a STOP event.
+            return;
         default:
             printf("Invalid robot state. Aborting.");
             stop = true;
@@ -37,19 +41,29 @@ static void RobotThread(SimpleRobot *robot) {
 
 int RobotMain(SimpleRobot *robot, int argc, char **argv) {
     std::thread rThread(RobotThread, robot);
+    
+    char c;
 
-    // Test the event loop.
-    std::this_thread::sleep_for(std::chrono::seconds(3));
-    robot->SetState(SimpleRobot::AUTO);
-
-    std::this_thread::sleep_for(std::chrono::seconds(3));
-    robot->SetState(SimpleRobot::TELEOP);
-
-    std::this_thread::sleep_for(std::chrono::seconds(3));
-    robot->SetState(SimpleRobot::TEST);
-
-    std::this_thread::sleep_for(std::chrono::seconds(3));
-    robot->SetState(SimpleRobot::DISABLED);
+    while (!stop && std::cin >> c) {
+        switch (c) {
+            case 'a':
+                robot->SetState(SimpleRobot::AUTO);
+                break;
+            case 'o':
+                robot->SetState(SimpleRobot::TELEOP);
+                break;
+            case 't':
+                robot->SetState(SimpleRobot::TEST);
+                break;
+            case 'd':
+                robot->SetState(SimpleRobot::DISABLED);
+                break;
+            case 'q':
+                robot->SetState(SimpleRobot::STOP);
+                stop = true;
+                break;
+        }
+    }
 
     // Request and stop and wait for the robot thread to die.
     stop = true;

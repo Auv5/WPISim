@@ -4,6 +4,7 @@
 class SimpleRobot {
     public:
         enum RobotState {
+            STOP,
             DISABLED,
             AUTO,
             TELEOP,
@@ -13,6 +14,8 @@ class SimpleRobot {
         SimpleRobot();
         virtual ~SimpleRobot();
 
+        virtual void Disabled();
+        bool IsDisabled();
         virtual void Autonomous();
         bool IsAutonomous();
         virtual void OperatorControl();
