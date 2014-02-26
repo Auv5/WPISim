@@ -22,9 +22,9 @@ AnalogTrigger
 - SetLimitsVoltage
 - SetFiltered
 - GetTriggerState
-DigitalInput
+DigitalInput (complete)
 - Get
-Compressor
+Compressor (complete)
 - Start
 Timer
 - Start
