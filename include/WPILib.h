@@ -3,8 +3,10 @@
 
 #include "SimpleRobot.hpp"
 #include "Main.hpp"
+#include "typedefs.hpp"
 
 // Library features
 #include "MotorController.hpp"
+#include "DigitalInput.hpp"
 
 #endif

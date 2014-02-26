@@ -38,11 +38,15 @@ class SimpleRobot {
         int GetDIO(int dio);
         int GetRelay(int relay);
 
-        void SetPWM(int pwm, int value);
-        void SetDIO(int dio, int value);
-        void SetRelay(int relay, int value);
+        bool SetPWM(int pwm, int value);
+        bool SetDIO(int dio, int value);
+        bool SetRelay(int relay, int value);
 
-        SimpleRobot *Get();
+        bool HasPWM(int pwm);
+        bool HasDIO(int dio);
+        bool HasRelay(int relay);
+
+        static SimpleRobot *Get();
 
     private:
         RobotState state;

@@ -3,8 +3,8 @@
 
 class Modifiable {
 public:
-    virtual void Set(int value) = 0;
-    virtual int Get() = 0;
+    virtual bool SetMod(int value) = 0;
+    virtual int GetMod() = 0;
 };
 
 #endif

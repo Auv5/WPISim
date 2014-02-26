@@ -1,5 +1,6 @@
-#include "SimpleRobot.hpp"
 #include <stdio.h>
+#include <vector>
+#include "SimpleRobot.hpp"
 
 SimpleRobot *SimpleRobot::inst_ = nullptr;
 
@@ -9,6 +10,18 @@ SimpleRobot::SimpleRobot() :
     dios(15),
     relays(8) {
     inst_ = this;
+    
+    for (Modifiable*& m : pwms) {
+        m = nullptr;
+    }
+
+    for (Modifiable*& m : dios) {
+        m = nullptr;
+    }
+
+    for (Modifiable*& m : relays) {
+        m = nullptr;
+    }
 } 
 
 SimpleRobot::~SimpleRobot() { }
@@ -62,37 +75,49 @@ void SimpleRobot::SetState(SimpleRobot::RobotState state) {
 }
 
 void SimpleRobot::RegisterPWM(Modifiable *m, int pwm) {
-    pwms[pwm] = m;
+    pwms[pwm-1] = m;
 }
 
 int SimpleRobot::GetPWM(int pwm) {
-    return pwms[pwm]->Get();
+    return pwms[pwm-1]->GetMod();
 }
 
-void SimpleRobot::SetPWM(int pwm, int value) {
-    pwms[pwm]->Set(value);
+bool SimpleRobot::SetPWM(int pwm, int value) {
+    return pwms[pwm-1]->SetMod(value);
+}
+
+bool SimpleRobot::HasPWM(int pwm) {
+    return pwms[pwm-1] != nullptr;
 }
 
 void SimpleRobot::RegisterDIO(Modifiable *m, int dio) {
-    dios[dio] = m;
+    dios[dio-1] = m;
 }
 
 int SimpleRobot::GetDIO(int dio) {
-    return dios[dio]->Get();
+    return dios[dio-1]->GetMod();
 }
 
-void SimpleRobot::SetDIO(int dio, int value) {
-    dios[dio]->Set(value);
+bool SimpleRobot::SetDIO(int dio, int value) {
+    return dios[dio-1]->SetMod(value);
+}
+
+bool SimpleRobot::HasDIO(int dio) {
+    return dios[dio-1] != nullptr;
 }
 
 void SimpleRobot::RegisterRelay(Modifiable *m, int relay) {
-    relays[relay] = m;
+    relays[relay-1] = m;
 }
 
 int SimpleRobot::GetRelay(int relay) {
-    return relays[relay]->Get();
+    return relays[relay-1]->GetMod();
 }
 
-void SimpleRobot::SetRelay(int relay, int value) {
-    relays[relay]->Set(value);
+bool SimpleRobot::SetRelay(int relay, int value) {
+    return relays[relay-1]->SetMod(value);
+}
+
+bool SimpleRobot::HasRelay(int relay) {
+    return relays[relay-1] != nullptr;
 }
