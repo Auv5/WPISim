@@ -65,7 +65,7 @@ int RobotMain(SimpleRobot *robot, int argc, char **argv) {
         }
     }
 
-    // Request and stop and wait for the robot thread to die.
+    // Request a stop and wait for the robot thread to die.
     stop = true;
     rThread.join();
 
